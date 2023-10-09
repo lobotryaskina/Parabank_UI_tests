@@ -1,0 +1,22 @@
+{
+  "name": "otus-ryaskina-project",
+  "version": "1.0.0",
+  "description": "Проект по автотестированию UI сервиса ParaBank",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lobotryaskina/otus-ryaskina-project.git"
+  },
+  "author": "lobotryaskina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lobotryaskina/otus-ryaskina-project/issues"
+  },
+  "homepage": "https://github.com/lobotryaskina/otus-ryaskina-project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "@types/node": "^20.8.3"
+  }
+}
