@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "Проект по автотестированию UI сервиса ParaBank",
   "main": "index.js",
-  "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:dev": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "codegen": "playwright test codegen",
+    "report:show": "playwright show-report",
+    "loginTest": "playwright test --headed loginTest.spec.js --project=chromium",
+    "registerTest": "playwright test --headed registerTest.spec.js --project=chromium"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lobotryaskina/otus-ryaskina-project.git"
