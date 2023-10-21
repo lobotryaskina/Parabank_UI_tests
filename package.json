@@ -4,6 +4,7 @@
   "description": "Проект по автотестированию UI сервиса ParaBank",
   "main": "index.js",
   "scripts": {
+    "cucumber": "cucumber-js test",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:dev": "playwright test --ui",
@@ -11,7 +12,7 @@
     "codegen": "playwright test codegen",
     "report:show": "playwright show-report",
     "loginTest": "playwright test --headed loginTest.spec.js --project=chromium",
-    "registerTest": "playwright test --headed registerTest.spec.js --project=chromium"
+    "registerTest": "playwright test --headed register Test.spec.js --project=chromium"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,12 @@
   },
   "homepage": "https://github.com/lobotryaskina/otus-ryaskina-project#readme",
   "devDependencies": {
+    "@cucumber/cucumber": "^9.4.0",
+    "@faker-js/faker": "^8.2.0",
     "@playwright/test": "^1.38.1",
     "@types/node": "^20.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }
