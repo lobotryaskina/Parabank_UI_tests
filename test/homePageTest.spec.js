@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+const { test, expect } = require('@playwright/test')
 
 test("Home page availability", async ({ page }) => {
     await page.goto("index.htm");
