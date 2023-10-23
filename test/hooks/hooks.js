@@ -31,8 +31,8 @@ Before(async function () {
 Before({ tags: "@NeedsAuth", timeout: 100 * 1000 }, async function () {
   loginPage = new MainPage(pageFixture.page);
   await loginPage.navigate();
-  await loginPage.fillUsername(process.env.LOGIN);
-  await loginPage.fillPassword(process.env.PASSWORD);
+  await loginPage.fillUsername('ourPreciousUser');
+  await loginPage.fillPassword('129!hder3@#R');
   await loginPage.clickLoginButton();
   await loginPage.checkLocatorExists(loginPage.locators.welcomeText);
 });
