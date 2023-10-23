@@ -24,13 +24,14 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Cucumber tests
         run: npm run cucumber
+      - name: upload report
+        run: allure generate -o allure-report --clean
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: test-report
           if-no-files-found: error
           path: |
-            reports/
             allure-report/
             allure-resutls/
           retention-days: 30

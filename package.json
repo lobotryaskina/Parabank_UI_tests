@@ -4,7 +4,7 @@
   "description": "Проект по автотестированию UI сервиса ParaBank",
   "main": "index.js",
   "scripts": {
-    "cucumber": "cucumber-js test",
+    "cucumber": "cucumber-js test -f ./reporter.js",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:dev": "playwright test --ui",
@@ -27,10 +27,12 @@
   "devDependencies": {
     "@cucumber/cucumber": "^9.4.0",
     "@faker-js/faker": "^8.2.0",
-    "@playwright/test": "^1.38.1",
+    "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.3",
     "allure-commandline": "^2.24.1",
-    "allure-cucumberjs": "^2.9.2",
+    "allure-cucumberjs": "^2.5.0",
+    "allure-js-commons": "^2.5.0",
+    "allure-playwright": "^2.9.2",
     "prettier": "3.0.3"
   },
   "dependencies": {

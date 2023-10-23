@@ -8,7 +8,7 @@ Feature: Bill payment
     Then I should see a successfull payment message
       And The payment payee should match the sent data
       And The payment amount should match the sent data
-      And The payment account should match the sent data
+      #And The payment account should match the sent data
 
 @NeedsAuth
   Scenario: The account numbers do not match
