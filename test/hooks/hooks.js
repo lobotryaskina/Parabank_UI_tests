@@ -19,7 +19,7 @@ let context;
 let page;
 
 BeforeAll(async function () {
-  browser = await chromium.launch({ headless: false });
+  browser = await chromium.launch({ headless: true });
 });
 
 Before(async function () {
