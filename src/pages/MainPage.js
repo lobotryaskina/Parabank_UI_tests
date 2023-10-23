@@ -15,7 +15,7 @@ exports.MainPage = class MainPage {
   };
 
   async navigate() {
-    await this.page.goto('https://parabank.parasoft.com/parabank/index.htm');
+    await this.page.goto(process.env.BASE_URL + process.env.MAIN_PAGE);
     await this.page.waitForLoadState("networkidle");
   }
 

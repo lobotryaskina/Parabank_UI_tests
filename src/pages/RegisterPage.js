@@ -26,7 +26,7 @@ exports.RegisterPage = class RegisterPage {
   };
 
   async navigate() {
-    await this.page.goto('https://parabank.parasoft.com/parabank/register.htm');
+    await this.page.goto(process.env.BASE_URL + process.env.REGISTER_PAGE);
     await this.page.waitForLoadState("networkidle");
   }
 
