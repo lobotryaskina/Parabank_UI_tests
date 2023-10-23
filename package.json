@@ -4,7 +4,7 @@
   "description": "Проект по автотестированию UI сервиса ParaBank",
   "main": "index.js",
   "scripts": {
-    "cucumber": "cucumber-js test --tags @this",
+    "cucumber": "cucumber-js test",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:dev": "playwright test --ui",
