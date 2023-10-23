@@ -61,7 +61,7 @@ jobs:
         with:
             to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
             token: ${{ secrets.TELEGRAM_TOKEN }}
-            file: test-results/cucumber-report.html
+            document: test-results/cucumber-report.html
             message: |
               ${{ github.actor }} created commit:
               Commit message: ${{ github.event.commits[0].message }}
@@ -74,5 +74,6 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v2
         env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
