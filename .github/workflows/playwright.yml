@@ -9,6 +9,8 @@ permissions:
       deployments: write
       packages: write
       pull-requests: write
+      issues: write
+      repository-projects: write
 jobs:
   test:
     timeout-minutes: 60
