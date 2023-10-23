@@ -14,29 +14,54 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - name: Install dependencies
         run: npm i
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
       - name: Run Cucumber tests
         run: npm run cucumber
         continue-on-error: true
+
       - name: Upload report
-        run: npx allure generate -o allure-report --clean
+        run: npx allure generate -c allure-results/ -o allure-report/ --clean
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: test-report
+          name: allure-results
           if-no-files-found: error
           path: |
-            allure-report/
-            allure-resutls/
+            allure-results
           retention-days: 30
+
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure reports action
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 20
+
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
             to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
             token: ${{ secrets.TELEGRAM_TOKEN }}
+            file: test-results/cucumber-report.html
             message: |
               ${{ github.actor }} created commit:
               Commit message: ${{ github.event.commits[0].message }}
@@ -44,12 +69,10 @@ jobs:
               Repository: ${{ github.repository }}
     
               See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-        
-      - name: upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-            path: .
     
-      - name: deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
