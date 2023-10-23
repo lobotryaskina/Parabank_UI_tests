@@ -15,8 +15,8 @@ Given("I am on the ParaBank login page", async function () {
 });
 
 When("I fill in the existing login and password", async () => {
-  await loginPage.fillUsername('ourPreciousUser');
-  await loginPage.fillPassword('129!hder3@#R');
+  await loginPage.fillUsername(process.env.LOGIN);
+  await loginPage.fillPassword(process.env.PASSWORD);
 });
 
 When("I submit the credentials", async () => {

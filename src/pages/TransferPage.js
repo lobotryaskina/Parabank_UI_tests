@@ -16,7 +16,7 @@ exports.TransferPage = class TransferPage {
   };
 
   async navigate() {
-    await this.page.goto('https://parabank.parasoft.com/parabank/transfer.htm');
+    await this.page.goto(process.env.BASE_URL + process.env.TRANSFER_PAGE);
     await this.page.waitForLoadState("networkidle");
   }
 
