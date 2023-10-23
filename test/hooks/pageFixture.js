@@ -1,3 +1,3 @@
 exports.pageFixture = {
-    page: undefined
+  page: undefined,
 };

@@ -1,12 +1,11 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
-const { dotenv } = require('dotenv');
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-('dotenv').config();
+// require('dotenv').config();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -22,7 +21,7 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 'test/utils/reporter.js',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -77,4 +76,3 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
