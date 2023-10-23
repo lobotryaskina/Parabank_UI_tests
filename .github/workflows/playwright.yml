@@ -34,15 +34,6 @@ jobs:
       - name: Upload report
         run: npx allure generate -c allure-results/ -o allure-report/ --clean
 
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: allure-results
-          if-no-files-found: error
-          path: |
-            allure-results
-          retention-days: 30
-
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
@@ -62,6 +53,15 @@ jobs:
           allure_history: allure-history
           keep_reports: 20
 
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: allure-results
+          if-no-files-found: error
+          path: |
+            allure-results
+          retention-days: 30
+
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
@@ -76,10 +76,6 @@ jobs:
     
               See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
     
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+      - name: deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
