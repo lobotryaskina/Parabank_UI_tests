@@ -14,7 +14,7 @@ exports.AccountsPage = class AccountsPage {
   };
 
   async navigate() {
-    await this.page.goto(process.env.BASE_URL + process.env.ACCOUNTS_PAGE);
+    await this.page.goto('https://parabank.parasoft.com/parabank/overview.htm');
     await this.page.waitForLoadState("networkidle");
   }
 

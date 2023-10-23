@@ -28,7 +28,7 @@ exports.BillPaymentPage = class BillPaymentPage {
   };
 
   async navigate() {
-    await this.page.goto(process.env.BASE_URL + process.env.PAYMENT_PAGE);
+    await this.page.goto('https://parabank.parasoft.com/parabank/billpay.htm');
     await this.page.waitForLoadState("networkidle");
   }
 
