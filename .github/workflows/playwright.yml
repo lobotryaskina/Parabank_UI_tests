@@ -56,4 +56,5 @@ jobs:
       - name: deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-    
+      allow failure:
+        exit_codes: 1
