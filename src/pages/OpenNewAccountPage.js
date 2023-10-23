@@ -15,7 +15,7 @@ exports.OpenNewAccountPage = class OpenNewAccountPage {
   };
 
   async navigate() {
-    await this.page.goto(process.env.BASE_URL + process.env.NEW_ACCOUNT_PAGE);
+    await this.page.goto('https://parabank.parasoft.com/parabank/openaccount.htm');
     await this.page.waitForLoadState("networkidle");
   }
 
