@@ -1,19 +1,21 @@
 {
-    "default": {
-        "formatOptions": {
-            "snippetInterface": "async-await"
-        },
-        "paths": [
-            "test/features/*.feature"
-        ],
-        "publishQuiet": false,
-        "dryRun": false,
-        "require": [
-            "test/stepdefs/*.js",
-            "test/hooks/hooks.js"
-        ],
-        "format": [
-            "html:test-results/cucumber-report.html"
-        ]
-    }
+  "default": {
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "paths": [
+      "test/features/accounts.feature"
+    ],
+    "publishQuiet": false,
+    "dryRun": false,
+    "require": [
+      "test/stepdefs/*.js", 
+      "test/hooks/hooks.js"
+    ],
+    "format": [
+      "html:test-results/cucumber-report.html",
+      "./test/utils/reporter.js:reports/allure.html",
+      "progress-bar"
+    ]
+  }
 }

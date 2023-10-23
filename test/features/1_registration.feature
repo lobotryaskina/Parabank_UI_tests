@@ -1,5 +1,6 @@
 Feature: Register on ParaBank
 
+@this
   Scenario: Valid registration
     Given I am on the ParaBank registration page
     When I fill in the account information with fake data
