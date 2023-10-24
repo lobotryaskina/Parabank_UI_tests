@@ -36,7 +36,7 @@ jobs:
         with: 
           name: cucumber-report
           if-no-files-found: error
-          path: ./test-results/cucumber-report
+          path: ./test-results/cucumber-report.html
 
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
