@@ -59,8 +59,7 @@ jobs:
         with:
           name: github-pages
           if-no-files-found: error
-          path: |
-            allure-results
+          path: allure-report/index.html
           retention-days: 30
 
       - name: Get Allure history
