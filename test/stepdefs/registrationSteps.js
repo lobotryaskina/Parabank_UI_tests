@@ -26,7 +26,7 @@ When("I fill in the account information with fake data", async () => {
   await registerPage.fillPhoneNumber(user.phoneNumber);
   await registerPage.fillSSN(user.ssn);
   await registerPage.fillUsername(user.username);
-  await registerPage.fillPassword(user.username);
+  await registerPage.fillPassword(user.password);
   await registerPage.fillRepeatedPassword(user.password);
 });
 
