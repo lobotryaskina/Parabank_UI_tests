@@ -1,25 +1,25 @@
 name: Playwright Tests
 on:
   workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 permissions:
       contents: read
       pages: write
       id-token: write
-      actions: write
-      deployments: write
-      packages: write
-      pull-requests: write
-      issues: write
-      repository-projects: write
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm i
@@ -32,35 +32,11 @@ jobs:
         continue-on-error: true
 
       - name: Upload report
-        run: npx allure generate -c allure-results/ -o allure-report/ --clean
-
-      - name: Get Allure history
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Allure reports action
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-          keep_reports: 20
-
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: github-pages
+        uses: actions/upload-artifact@v3
+        with: 
+          name: cucumber-report
           if-no-files-found: error
-          path: |
-            allure-results
-          retention-days: 30
+          path: ./test-results/cucumber-report
 
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
@@ -76,6 +52,11 @@ jobs:
     
               See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
     
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .
+
       - name: deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1

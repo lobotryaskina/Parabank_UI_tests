@@ -25,9 +25,9 @@ When("I fill in the account information with fake data", async () => {
   await registerPage.fillZipCode(user.zipCode);
   await registerPage.fillPhoneNumber(user.phoneNumber);
   await registerPage.fillSSN(user.ssn);
-  await registerPage.fillUsername(process.env.LOGIN);
-  await registerPage.fillPassword(process.env.PASSWORD);
-  await registerPage.fillRepeatedPassword(process.env.PASSWORD);
+  await registerPage.fillUsername(user.username);
+  await registerPage.fillPassword(user.username);
+  await registerPage.fillRepeatedPassword(user.password);
 });
 
 When(
